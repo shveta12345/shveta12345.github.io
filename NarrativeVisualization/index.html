@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <meta charset="urf-8">
+    <title> Crimes in CoC </title>
+    
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="site.css"/>
+    <script>
+        function LetsBegin(){
+        setTimeout(function(){ 
+        d3.select(".btns").classed("hidden",false);
+        d3.select(".begin").classed("hidden",true);
+        d3.select("#beginText").classed("hidden",true);
+    }, 1000);
+}
+    </script>
+    <script src="script.js"></script>
+</head>
+<body onload="init()">
+    <div class="container" style="margin-left:0px; margin-right:0px; background-color:rgb(182, 217, 222);">
+        <div class="row">
+            <h1 class="text-center">CHICAGO REPORTED CRIMES</h1>
+            <div class="col-lg-9">
+                <svg width="1100" class="svg" height="700"></svg>
+            </div>
+            <div class="col-lg-3">
+                <div class="begin">
+                    <button type="button" class="btn btn-info" style="background-color:rgb(19, 69, 206);" onclick="LetsBegin()">Chicago Crime Scenes</button>
+                    <style>
+                        body {background-color:rgb(182, 217, 222);}
+                    </style>
+                </div>
+                <div class="btns hidden">
+                    <p>Move through the slides by clicking below buttons</p>
+                    <button type="button" class="btn btn-info" style="background-color:rgb(19, 69, 206);" onclick="scene0()">Introduction</button>
+                    <button type="button" class="btn btn-info" style="background-color:rgb(19, 69, 206);" onclick="scene1()">1</button>
+                    <button type="button" class="btn btn-info" style="background-color:rgb(19, 69, 206);" onclick="scene2()">2</button>
+                    <button type="button" class="btn btn-info" style="background-color:rgb(19, 69, 206);" onclick="scene3()">3</button>
+                    <button type="button" class="btn btn-info" style="background-color:rgb(19, 69, 206);" onclick="scene4('BATTERY')">4</button>
+                </div>
+                <hr>
+                <div id="scene0"></div>
+                <div id="beginText" class=""></div>
+                <div id="scene1"></div>
+                <div id="scene2"></div>
+                <div id="scene3"></div>
+                <div class="dropdown"></div>
+            </div>
+        </div>
+    </div>
+</body>

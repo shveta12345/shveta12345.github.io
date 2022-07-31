@@ -1,0 +1,19 @@
+.text-center{
+    text-align: center;
+}
+
+.bar { 
+    fill: #d62728;
+}
+
+#scene0, #scene1, #scene2, #scene3, #scene4, #beginText {
+  font-size: 12px;
+}
+
+
+.button {
+  position: absolute;
+  top:50%;
+  background-color:#67c3ca;
+  color: rgb(43, 115, 225);
+}
