@@ -17,9 +17,9 @@ function init() {
             var arr1 = d.Date.split(" ");
             var arr2 = arr1[1].split(":");
             DateArray.push(months[arr[0]]);
-            LocationDescriptionArray.push(d.InspectionType);
-            crimeLocation.push([d.PrimaryType, d.InspectionType]);
-            crimesType.push(d.PrimaryType)
+            LocationDescriptionArray.push(d.LocationDescription);
+            crimeLocation.push([d.FacilityType, d.LocationDescription]);
+            crimesType.push(d.FacilityType)
         });
     }); 
     d3.select(".dropdown").insert("h4").text("Select facility:");
@@ -440,42 +440,39 @@ async function scene3() {
     d3.select("#scene3").selectAll("*").remove();
     d3.select("#scene4").selectAll("*").remove();
     d3.select(".dropdown").classed("hidden",true);
-    d3.select("#scene3").insert("h2").text("Number of Every year food inspection ");
-    d3.select("#scene3").insert("span").text("The bar chart shows total food inspection happens every year in Illinois.");
+    d3.select("#scene3").insert("h2").text("Total Crimes per Month");
+    d3.select("#scene3").insert("span").text("The bar chart shows total crimes occurred in Chicago in the year 2020.");
     d3.select("#scene3").insert("br");
     d3.select("#scene3").insert("br");
-    d3.select("#scene3").insert("span").text("Food Inspection cases were less in 2021 due to covid, apart from that every year cases were high more than 2021");
+    d3.select("#scene3").insert("span").text("Crimes are usuallly high and comparably similar throughout the year expect the month of April where the total crimes are the lowest");
 
-    // const countUnique = DateArray => {
-    //     const counts = {};
-    //     for (var i = 0; i < DateArray.length; i++) {
-    //        counts[DateArray[i]] = 1 + (counts[DateArray[i]] || 0);
-    //     };
-    //     return counts;
-    //  };
+    const countUnique = DateArray => {
+        const counts = {};
+        for (var i = 0; i < DateArray.length; i++) {
+           counts[DateArray[i]] = 1 + (counts[DateArray[i]] || 0);
+        };
+        return counts;
+     };
 
-    // var abc = countUnique(DateArray);
-    // var items = Object.keys(abc).map(function(key) {
-    //     return [key, abc[key]];
-    // });
+    var abc = countUnique(DateArray);
+    var items = Object.keys(abc).map(function(key) {
+        return [key, abc[key]];
+    });
 
-    // var arr = [items[8],items[1], items[0],items[9],items[4],items[5], items[7], items[6], items[11],items[10], items[3],items[2]];
+    var arr = [items[8],items[1], items[0],items[9],items[4],items[5], items[7], items[6], items[11],items[10], items[3],items[2]];
 
-    // var x = d3.scaleBand()
-    //         .range([0, 800])
-    //         .padding(0.8);
-    // var y = d3.scaleLinear()
-    //         .range([500, 0]);
+    var x = d3.scaleBand()
+            .range([0, 800])
+            .padding(0.8);
+    var y = d3.scaleLinear()
+            .range([500, 0]);
 
-    // x.domain(arr.map(function(d) { 
-    //     return d[0]; 
-    // }));
+    x.domain(arr.map(function(d) { 
+        return d[0]; 
+    }));
 
-    // y.domain([0, d3.max(arr, function(d) { return d[1]; })]);
+    y.domain([0, d3.max(arr, function(d) { return d[1]; })]);
 
-
-    
-    //====================================================================
     d3.select("svg")
     .append("g")
     .attr("transform","translate(100 ,0)")
@@ -509,7 +506,7 @@ async function scene3() {
     .attr("y",0)
     .attr("width",115)
     .attr("height",40)
-    .attr("fill","black")
+    .attr("fill","lightgray")
     .transition().duration(1000);
 
     //DRAW  TEXT 
@@ -538,7 +535,7 @@ async function scene3() {
     .attr("x",-215)
     .attr("dy", "1em")
     .style("text-anchor", "middle")
-    .text("Food Inspection Cases");  
+    .text("NUMBER OF CRIMES");  
 
     d3.select("svg")
     .append("text")
@@ -559,6 +556,7 @@ async function scene3() {
     .attr("stroke-width",0.75)
     .attr("stroke","gray");
 }
+
 
 function scene4(ddi) {
     d3.select(".svg").selectAll("*").remove();
