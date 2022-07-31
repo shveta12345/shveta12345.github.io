@@ -10,7 +10,7 @@ var crimesType = [];
 var chosenField = "Restaurant";
 
 function init() {
-    d3.csv("https://raw.githubusercontent.com/shveta12345/shveta12345.github.io/main/Food_Inspections.csv").then(function(data) {
+    d3.csv("https://raw.githubusercontent.com/shveta12345/shveta12345.github.io/main/data.csv").then(function(data) {
         data.forEach(function(d) {
             PrimaryTypeArray.push(d.FacilityType);
             var arr = d.Date.split("/");
