@@ -7,11 +7,10 @@ var months = { "01": "January", "02": "February", "03": "March", "04": "April", 
 var LocationDescriptionArray = [];
 var crimeLocation = [];
 var crimesType = [];
-var chosenField = "RESTAURANT";
+var chosenField = "Restaurant";
 
 function init() {
-    var data = d3.csv('https://raw.githubusercontent.com/shveta12345/NarrativeVisualization/main/Food_Inspections.csv')
-    .then(function(data) {
+    d3.csv("https://raw.githubusercontent.com/shveta12345/NarrativeVisualization/main/Food_Inspections.csv").then(function(data) {
         data.forEach(function(d) {
             PrimaryTypeArray.push(d.FacilityType);
             var arr = d.Date.split("/");
@@ -95,8 +94,8 @@ function scene1() {
     var arr = items.slice(0, 10);
     
     var x = d3.scaleBand()
-            .range([0, 800])
-            .padding(0.8);
+            .range([0, 500])
+            .padding(10);
     var y = d3.scaleLinear()
             .range([500, 0]);
 
@@ -107,7 +106,7 @@ function scene1() {
     d3.select("svg")
     .append("g")
     .attr("transform","translate(100 ,0)")
-    .selectAll("rect")
+    .selectAll(".bar")
     .data(arr)
     .enter().append("rect")
     // .attr("class", "bar")
