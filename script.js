@@ -10,7 +10,7 @@ var crimesType = [];
 var chosenField = "Restaurant";
 
 function init() {
-    d3.csv("https://raw.githubusercontent.com/shveta12345/NarrativeVisualization/main/Food_Inspections.csv").then(function(data) {
+    d3.csv("https://raw.githubusercontent.com/shveta12345/shveta12345.github.io/main/Food_Inspections.csv").then(function(data) {
         data.forEach(function(d) {
             PrimaryTypeArray.push(d.FacilityType);
             var arr = d.Date.split("/");
@@ -18,8 +18,8 @@ function init() {
             var arr2 = arr1[1].split(":");
             DateArray.push(months[arr[0]]);
             LocationDescriptionArray.push(d.InspectionType);
-            crimeLocation.push([d.FacilityType, d.InspectionType]);
-            crimesType.push(d.FacilityType)
+            crimeLocation.push([d.PrimaryType, d.InspectionType]);
+            crimesType.push(d.PrimaryType)
         });
     }); 
     d3.select(".dropdown").insert("h4").text("Select facility:");
@@ -94,8 +94,8 @@ function scene1() {
     var arr = items.slice(0, 10);
     
     var x = d3.scaleBand()
-            .range([0, 500])
-            .padding(10);
+            .range([0, 800])
+            .padding(0.5);
     var y = d3.scaleLinear()
             .range([500, 0]);
 
