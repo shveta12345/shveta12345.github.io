@@ -7,7 +7,7 @@ var crimeLocation = [];
 var crimesType = [];
 var chosenField = "THEFT";
 function init() {
-   d3.csv("https://raw.githubusercontent.com/shveta12345/shveta12345.github.io/main/COC2021.csv").then(function(data) {
+   d3.csv("https://raw.githubusercontent.com/shveta12345/shveta12345.github.io/main/data.csv").then(function(data) {
         data.forEach(function(d) {
             PrimaryTypeArray.push(d.PrimaryType);
             var arr = d.Date.split("/");
@@ -25,7 +25,7 @@ function init() {
     d3.select(".dropdown").insert("span").html('<input type="button" value="Sort this graph" onclick="sort()"/>');
     d3.select("#scene0").insert("h2").text("Introduction");
     d3.select("#scene0").insert("span").text("This narrative visualization shows crimes occured in Chicago since 2020. ");
-    d3.select("#scene0").insert("span").text("Data source is from City of Chicago portal and the data is 01/01/2001 to 12/31/2020");
+    d3.select("#scene0").insert("span").text("Data source is from City of Chicago portal and the data is 01/01/2020 to 12/31/2020");
     d3.select("#scene0").insert("span").html('<a target="_blank" href="https://data.cityofchicago.org/Public-Safety/Crimes-2001-to-Present/ijzp-q8t2/">Link to Chicago Reported Crimes dataset</a>');
     d3.select("#scene0").insert("br");
     d3.select("#scene0").insert("br");
@@ -44,8 +44,6 @@ function scene0() {
     d3.select("#scene4").selectAll("*").remove();
     d3.select(".dropdown").classed("hidden",true);
     d3.select("#scene0").insert("h2").text("Introduction");
-    d3.select("#scene0").insert("span").text("This narrative visualization shows crimes occured in Chicago in the year 2020. ");
-    d3.select("#scene0").insert("span").text("Data source is from City of Chicago portal and the data is 01/01/2020 to 12/31/2020");
     d3.select("#scene0").insert("br");
     d3.select("#scene0").insert("br");
     d3.select("#scene0").insert("span").html('<a target="_blank" href="https://data.cityofchicago.org/Public-Safety/Crimes-2020/qzdf-xmn8/data">Link to City of Chicago portal</a>');
@@ -167,7 +165,7 @@ function scene1() {
     .attr("y",25)
     .attr("dy",".35em")
     .style("font-size","11px")
-    .text("Burglary, Weapons Violation & Robbery")
+    .text("THEFT, BATTERY, CRIMINAL DAMAGE")
     .attr("fill","black");
 
     //DRAW  LINE 
@@ -385,7 +383,7 @@ async function scene2() {
     .attr("y",325)
     .attr("dy",".35em")
     .style("font-size","11px")
-    .text("Restaurant & Gas Station")
+    .text("RESTAURANT & GAS STATION")
     .attr("fill","black");
 
     //DRAW  LINE 
