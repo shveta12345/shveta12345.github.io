@@ -7,7 +7,7 @@ var crimeLocation = [];
 var crimesType = [];
 var chosenField = "THEFT";
 function init() {
-   d3.csv("https://raw.githubusercontent.com/shveta12345/shveta12345.github.io/main/data.csv").then(function(data) {
+   d3.csv("https://raw.githubusercontent.com/shveta12345/shveta12345.github.io/main/COC2021.csv").then(function(data) {
         data.forEach(function(d) {
             PrimaryTypeArray.push(d.PrimaryType);
             var arr = d.Date.split("/");
